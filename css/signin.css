@@ -1,0 +1,61 @@
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    /* background-image: url(../img/other/signin-icon.jpg); */
+}
+
+#plan {
+    /* background-image: url(../img/other/signin-icon.jpg); */
+    background-image: url(../img/other/bg.jpg);
+    min-height: 700px;
+    /* background: #ffffff; */
+    display: flex;
+    color: #fff;
+}
+
+#plan h2:hover {
+    color: #000;
+    transform: scale(1.2);
+}
+
+.input-text {
+    margin: 10px 0 20px 0;
+}
+
+.form-background {
+    background: #7f9a97;
+    margin-top: 60px;
+    height: 50px;
+    margin-bottom: auto;
+    padding-top: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-radius: 20px;
+}
+
+.text-service {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.btn-login {
+    margin: 50px auto 30px auto;
+    cursor: pointer;
+    padding: 12px 38px;
+    letter-spacing: 3px;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+}
+
+#plan a {
+    color: #d1ca00;
+    text-decoration: none !important;
+    font-size: 20px;
+    transition: all 0.1s ease-in-out;
+}
+
+#plan a:hover {
+    color: #02735f;
+}
