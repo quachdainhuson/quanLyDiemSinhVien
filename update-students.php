@@ -114,7 +114,7 @@ else if($error){?>
                                                     <thead>
                                                         <tr>
                                                             <th>ID</th>
-                                                            <th>Họ-lót</th>
+                                                            <th>Họ Đệm</th>
                                                             <th>Tên</th>
                                                             <th>SĐT</th>
                                                             <th>Email</th>
@@ -122,18 +122,6 @@ else if($error){?>
                                                             <th>Thao tác</th>
                                                         </tr>
                                                     </thead>
-                                                    <tfoot>
-                                                        <tr>
-                                                            <th>ID</th>
-                                                            
-                                                            <th>Họ-lót</th>
-                                                            <th>Tên</th>
-                                                            <th>SĐT</th>
-                                                            <th>Email</th>
-                                                            <th>Mã lớp cn</th>
-                                                            <th>Thao tác</th>
-                                                        </tr>
-                                                    </tfoot>
                                                     <tbody>
                                         <?php $sql = "SELECT * from tbl_sinhvien";
                                         $query = $dbh->prepare($sql);

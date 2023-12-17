@@ -25,32 +25,31 @@ if(strlen($_SESSION['alogin'])=="")
         <link rel="stylesheet" href="css/main.css" media="screen" >
         <script src="js/modernizr/modernizr.min.js"></script>
           <style>
-    .errorWrap {
-        padding: 10px;
-        margin: 0 0 20px 0;
-        background: #fff;
-        border-left: 4px solid #dd3d36;
-        -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-        box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-}
-    .succWrap {
-        padding: 10px;
-        margin: 0 0 20px 0;
-        background: #fff;
-        border-left: 4px solid #5cb85c;
-        -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-        box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-    }   
-    .them-diem {
-
-        margin-bottom: 10px;
-        margin-right: 10px;
-        margin-left: 20px;
-        background: #5cb85c;
-        padding: 10px;
-        color: #fff;
-        border-radius: 5px;
-}
+        .errorWrap {
+            padding: 10px;
+            margin: 0 0 20px 0;
+            background: #fff;
+            border-left: 4px solid #dd3d36;
+            -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+            box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+        }
+        .succWrap{
+            padding: 10px;
+            margin: 0 0 20px 0;
+            background: #fff;
+            border-left: 4px solid #5cb85c;
+            -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+            box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+        }
+        .them-hocphan{
+            margin-bottom: 10px;
+            margin-right: 10px;
+            margin-left: 20px;
+            background: #5cb85c;
+            padding: 10px;
+            color: #fff;
+            border-radius: 5px;
+        }
         </style>
     </head>
     <body class="top-navbar-fixed">
@@ -67,9 +66,9 @@ if(strlen($_SESSION['alogin'])=="")
                         <div class="container-fluid">
                             <div class="row page-title-div">
                                 <div class="col-md-6">
-                                    <h2 class="title">Quản lý điểm</h2>
-                                
+                                    <h2 class="title">Quản Lý Học Phần</h2>
                                 </div>
+                                
                                 <!-- /.col-md-6 text-right -->
                             </div>
                             <!-- /.row -->
@@ -77,8 +76,8 @@ if(strlen($_SESSION['alogin'])=="")
                                 <div class="col-md-6">
                                     <ul class="breadcrumb">
             							<li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
-                                        <li> Kết Quả</li>
-            							<li class="active">Quản lý điểm</li>
+                                        <li> Classes</li>
+            							<li class="active">Quản Lý Học Phần</li>
             						</ul>
                                 </div>
                              
@@ -96,9 +95,9 @@ if(strlen($_SESSION['alogin'])=="")
                                         <div class="panel">
                                             <div class="panel-heading">
                                                 <div class="panel-title">
-                                                    <h5 style="padding-bottom: 20px;">Danh sách điểm</h5>
+                                                    <h5 style="padding-bottom: 20px">Danh sách học phần</h5>
                                                 </div>
-                                                <a href="add-result.php" class="them-diem">Thêm Điểm</a>
+                                                <a href="create-subject.php" class="them-hocphan">Thêm Học Phần</a>
                                             </div>
 <?php if($msg){?>
 <div class="alert alert-success left-icon-alert" role="alert">
@@ -114,43 +113,33 @@ else if($error){?>
                                                 <table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">
                                                     <thead>
                                                         <tr>
-                                                            <th>ID</th>
-                                                            
-                                                            <th>Mã sinh viên</th>
-                                                            <th>Họ và tên</th>
-                                                            <th>Mã học phần</th>
-                                                            <th>Điểm A</th>
-                                                            <th>Điểm B</th>
-                                                            <th>Điểm C</th>
+                                                            <th>Mã Học Phần</th>
+                                                            <th>Tên Học Phần</th>
+                                                            <th>Tín Chỉ</th>
+                                                            <th>Thao tác</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <?php
-$sql = "SELECT tbl_sinhvien.*, tbl_diemhocphan.* 
-        FROM tbl_sinhvien 
-        JOIN tbl_diemhocphan ON tbl_sinhvien.msv = tbl_diemhocphan.msv";
-$query = $dbh->prepare($sql);
-$query->execute();
-$results = $query->fetchAll(PDO::FETCH_OBJ);
-$cnt = 1;
-
-if ($query->rowCount() > 0) {
-    foreach ($results as $result) {
-        ?>
-        <tr>
-            <td><?php echo htmlentities($cnt); ?></td>
-            <td><?php echo htmlentities($result->msv); ?></td>
-            <td><?php echo htmlentities($result->ho_lot . ' ' . $result->ten); ?></td>
-            <td><?php echo htmlentities($result->mhp); ?></td>
-            <td><?php echo htmlentities($result->A); ?></td>
-            <td><?php echo htmlentities($result->B); ?></td>
-            <td><?php echo htmlentities($result->C); ?></td>
-        </tr>
-        <?php
-        $cnt = $cnt + 1;
-    }
-}
-?>
+                                        <?php $sql = "SELECT * from tbl_hocphan";
+                                        $query = $dbh->prepare($sql);
+                                        $query->execute();
+                                        $results=$query->fetchAll(PDO::FETCH_OBJ);
+                                        $cnt=1;
+                                        if($query->rowCount() > 0)
+                                        {
+                                        foreach($results as $result)
+                                        {   ?>
+                                        <tr>
+                                            <td><?php echo htmlentities($result->mhp);?></td>
+                                            <td><?php echo htmlentities($result->ten_hoc_phan);?></td>
+                                            <td><?php echo htmlentities($result->tinchi);?></td>
+                                        <td>
+                                            <a href="delete_subjects.php?mhp=<?php echo htmlentities($result->mhp);?>">
+                                            <i class="fa fa-trash-o" title="Delete Record"></i>
+                                            </a>
+</td>
+</tr>
+<?php $cnt=$cnt+1;}} ?>
                                                        
                                                     
                                                     </tbody>
